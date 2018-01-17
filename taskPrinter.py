@@ -1,5 +1,6 @@
 from PIL import Image
 from PIL import ImageDraw
+from task import Task
 
 WHITE_RGB = (255, 255, 255)
 
@@ -14,7 +15,9 @@ draw = ImageDraw.Draw(img)
 draw.rectangle(((0,0),(UNIT_WIDTH,UNIT_HEIGTH)),outline='black')
 draw.text(((0,0)),'test \n dd',fill='black')
 
+task = Task('a','b',2)
+print(task)
 
-img.show()
+# img.show()
 # img.save('test.jpg')
 print('success')
