@@ -1,8 +1,8 @@
 Logic:
-- create rectangle
-- write title, description, estimate to rectangle
+DONE: - create rectangle
+DONE: - write title, description, estimate to rectangle
 DONE: - create object Task with title, description, estimate
-- create rectangle from above object
+DONE: - create rectangle from above object
 - convert list of tasks to collection of Task objects
 - merge multiple rectangles to support A4 format (4 x 2)
 
