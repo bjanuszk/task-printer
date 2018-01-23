@@ -3,6 +3,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 import textwrap
 
+
 class Task(object):
     def __init__(self, user_story, description, estimate):
         self.user_story = user_story
@@ -11,6 +12,7 @@ class Task(object):
 
     def __str__(self):
         return 'User story: %s, description: %s, estimate: %s' % (self.user_story, self.description, self.estimate)
+
 
 WHITE_RGB = (255, 255, 255)
 UNIT_HEIGTH = 140
@@ -21,6 +23,7 @@ MAX_LINE_LENGTH = 40
 FONT_25 = ImageFont.truetype('Roboto-Black.ttf', 25)
 FONT_20 = ImageFont.truetype('Roboto-Black.ttf', 20)
 FONT_18 = ImageFont.truetype('Roboto-Black.ttf', 18)
+
 
 def create_task_rectangle(task):
     UNIT_HEIGTH = 140
@@ -34,11 +37,20 @@ def create_task_rectangle(task):
     draw.text(((MARGIN, 110)), 'Left [h]: ' + task.estimate, fill='black', font=FONT_20)
     return img
 
+
 def mergeImages(images):
     result = Image.new("RGB", (594, 840), color=WHITE_RGB)
-    #TODO create images matrix
-    result.paste(images[0],(0,0,UNIT_WIDTH,UNIT_HEIGTH))
-    result.show()
+    # TODO create images matrix
+    for index in range(0, len(images)):
+        pair_no = index // 2
+        if index % 2 == 0:
+            position = (0, (pair_no * UNIT_HEIGTH), UNIT_WIDTH, UNIT_HEIGTH + (pair_no * UNIT_HEIGTH))
+            result.paste(images[index], position)
+        else:
+            position = (UNIT_WIDTH, (pair_no * UNIT_HEIGTH), 2 * UNIT_WIDTH, UNIT_HEIGTH + (pair_no * UNIT_HEIGTH))
+            result.paste(images[index], position)
+    return result
+
 
 def __draw_description(draw, text):
     wrapped_description = textwrap.wrap(text, MAX_LINE_LENGTH)
@@ -46,3 +58,4 @@ def __draw_description(draw, text):
         draw.text((MARGIN, (40 + (x * 15))), wrapped_description[x], fill='black', font=FONT_18)
 
 # print(FONT_18.getsize('XX'))
+# print(FONT_18.getsize('XX')[0])

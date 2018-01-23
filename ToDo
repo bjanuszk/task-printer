@@ -3,8 +3,8 @@ DONE: - create rectangle
 DONE: - write title, description, estimate to rectangle
 DONE: - create object Task with title, description, estimate
 DONE: - create rectangle from above object
-- convert list of tasks to collection of Task objects
-- merge multiple rectangles to support A4 format (4 x 2)
+- convert list of tasks to collection of Task objects splited by 12
+DONE: - merge multiple rectangles to support A4 format (6 x 2)
 
 AWS:
 - what contains S3Event from Lambda
